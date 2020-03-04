@@ -5,9 +5,16 @@ VisualStudioVersion = 16.0.29806.167
 MinimumVisualStudioVersion = 15.0.26124.0
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiClient.Common", "ApiClient.Common\ApiClient.Common.csproj", "{6FA1D4C1-46B8-421A-AF1D-F9171A2312A9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiClient.Tests", "ApiClient.Tests\ApiClient.Tests.csproj", "{55DC0B50-3D41-4A5B-8F6C-D6B0296FDCE9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiClient.Tests", "ApiClient.Tests\ApiClient.Tests.csproj", "{55DC0B50-3D41-4A5B-8F6C-D6B0296FDCE9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiClient.Utilities", "ApiClient.Utilities\ApiClient.Utilities.csproj", "{1ACB9FC0-C5D1-417A-B207-F3397DEAAE66}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiClient.Utilities", "ApiClient.Utilities\ApiClient.Utilities.csproj", "{1ACB9FC0-C5D1-417A-B207-F3397DEAAE66}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Files", "Solution Files", "{B4A3174B-D800-4E34-92DB-37ADE971D00F}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+		.gitignore = .gitignore
+		README.md = README.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
