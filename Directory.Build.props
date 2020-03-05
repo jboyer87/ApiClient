@@ -1,0 +1,17 @@
+<Project>
+	<PropertyGroup>
+		<Product>ApiClient</Product>
+		<Version>0.0.1</Version>
+		<Authors>James J. Boyer</Authors>
+		<Copyright>Copyright 2020</Copyright>
+	</PropertyGroup>
+
+	<PropertyGroup>
+		<VersionPrefix>$(VersionMajor).$(VersionMinor).$(VersionPatch)</VersionPrefix>
+		<VersionSuffix>preview</VersionSuffix>
+	</PropertyGroup>
+
+	<PropertyGroup>
+		<Deterministic>false</Deterministic>
+	</PropertyGroup>
+</Project>
