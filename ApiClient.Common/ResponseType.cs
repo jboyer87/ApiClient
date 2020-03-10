@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace ApiClient.Common
+﻿namespace ApiClient.Common
 {
 	/// <summary>
 	/// The <c>ResponseType</c> class models the common API response types.

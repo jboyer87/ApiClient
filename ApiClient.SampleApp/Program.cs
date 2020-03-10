@@ -13,16 +13,35 @@ namespace ApiClient.SampleApp
 			var responseType = ResponseType.PlainText;
 			var requestType = RequestType.Json;
 
-			var config = new BasicConnectionConfig(url, responseType, requestType);
+			var basicConnectionConfig = new BasicConnectionConfig(url, responseType, requestType);
 
-			var connection = new BasicConnection(config);
+			var basicConnection = new BasicConnection(basicConnectionConfig);
 
-			Response response = connection.Post("/post", null, "This is my body");
+			Response basicConnectionResponse = 
+				basicConnection.Post("/post", null, "This is my body");
 
 			Console.WriteLine(
-				String.Format("The status code: {1}\nThe response: {0}", 
-				response.Message, 
-				response.StatusCode)
+				"**Basic connection test**\n" +
+				String.Format("The status code: {1}\nThe response: {0}",
+				basicConnectionResponse.Message,
+				basicConnectionResponse.StatusCode)
+			);
+
+			string username = "postman";
+			string password = "password";
+
+			var basicAuthConfig = 
+				new BasicAuthConnectionConfig(url, responseType, requestType, username, password);
+
+			var basicAuthConnection = new BasicAuthConnection(basicAuthConfig);
+
+			Response basicAuthResponse = basicAuthConnection.Get("/basic-auth", null);
+
+			Console.WriteLine(
+				"**Basic authentication connection test**\n" +
+				String.Format("The status code: {1}\nThe response: {0}",
+				basicAuthResponse.Message,
+				basicAuthResponse.StatusCode)
 			);
 		}
 	}

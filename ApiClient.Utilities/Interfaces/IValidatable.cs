@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace ApiClient.Utilities.Interfaces
+﻿namespace ApiClient.Utilities.Interfaces
 {
 	/// <summary>
 	/// Represents a validatable object.

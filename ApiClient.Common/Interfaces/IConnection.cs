@@ -7,6 +7,25 @@ namespace ApiClient.Common.Interfaces
 	/// </summary>
 	public interface IConnection
 	{
+		#region [Interface Properties]
+
+		/// <summary>
+		/// Holds the connection configuration information.
+		/// </summary>
+		public IConnectionConfiguration ConnectionConfiguration { get; }
+
+		/// <summary>
+		/// Returns the current value of the connection config's request type.
+		/// </summary>
+		public string RequestType { get; }
+
+		/// <summary>
+		/// Returns the current value of the connection config's response type;
+		/// </summary>
+		public string ResponseType { get; }
+
+		#endregion
+
 		#region [Interface Methods]
 
 		/// <summary>

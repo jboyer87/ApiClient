@@ -14,14 +14,19 @@ namespace ApiClient.Common
 	{
 		#region [Constructors]
 
-		public BasicConnection(BasicConnectionConfig basicConnectionConfig)
+		/// <summary>
+		/// Validates the <paramref name="connectionConfiguration"/> and instantiates a 
+		/// <c>BasicConnection</c>.
+		/// </summary>
+		/// <param name="connectionConfiguration">The connection configuration details.</param>
+		public BasicConnection(IConnectionConfiguration connectionConfiguration)
 		{
-			if(!basicConnectionConfig.IsValid())
+			if(!connectionConfiguration.IsValid())
 			{
 				throw new ArgumentException("Connection configuration is not valid");
 			}
 
-			BasicConnectionConfig = basicConnectionConfig;
+			ConnectionConfiguration = connectionConfiguration;
 		}
 
 		#endregion
@@ -31,14 +36,16 @@ namespace ApiClient.Common
 		/// <summary>
 		/// Holds the connection configuration information.
 		/// </summary>
-		public BasicConnectionConfig BasicConnectionConfig { get; private set; }
+		public IConnectionConfiguration ConnectionConfiguration { get; private set; }
 
 		/// <summary>
 		/// Returns the current value of the connection config's request type.
 		/// </summary>
-		public string RequestType { 
-			get {
-				return BasicConnectionConfig.RequestType.Type.ToString();
+		public string RequestType
+		{
+			get
+			{
+				return ConnectionConfiguration.RequestType.Type.ToString();
 			}
 		}
 
@@ -49,7 +56,7 @@ namespace ApiClient.Common
 		{
 			get
 			{
-				return BasicConnectionConfig.ResponseType.Type.ToString();
+				return ConnectionConfiguration.ResponseType.Type.ToString();
 			}
 		}
 
@@ -64,9 +71,9 @@ namespace ApiClient.Common
 		/// <param name="url">The API endpoint.</param>
 		/// <param name="headers">The headers to send with the request (optional).</param>
 		/// <returns>A <c>Response</c> object.</returns>
-		public Response Get(string url, Dictionary<string, string> headers = null)
+		public virtual Response Get(string url, Dictionary<string, string> headers = null)
 		{
-			string requestUrl = BasicConnectionConfig.BaseRequestUrl + url;
+			string requestUrl = ConnectionConfiguration.BaseRequestUrl + url;
 
 			Response response = SendWebRequest(requestUrl, headers);
 
@@ -81,10 +88,10 @@ namespace ApiClient.Common
 		/// <param name="headers">The headers to send with the request (optional).</param>
 		/// <param name="body">The request body (optional).</param>
 		/// <returns>A <c>Response</c> object.</returns>
-		public Response Post(string url, Dictionary<string, string> headers = null, 
+		public virtual Response Post(string url, Dictionary<string, string> headers = null, 
 			string body = "")
 		{
-			string requestUrl = BasicConnectionConfig.BaseRequestUrl + url;
+			string requestUrl = ConnectionConfiguration.BaseRequestUrl + url;
 
 			Response response = SendWebRequest(requestUrl, headers, body);
 
@@ -98,7 +105,7 @@ namespace ApiClient.Common
 		/// <summary>
 		/// The <c>HttpClient</c> to be used for the life of the connection.
 		/// </summary>
-		private static HttpClient _client = null;
+		internal static HttpClient _client = null;
 
 		#endregion
 
@@ -109,7 +116,7 @@ namespace ApiClient.Common
 		/// if null. Uses the same <c>HttpClient</c> for the life of each <c>BasicConnection</c>.
 		/// </summary>
 		/// <returns>A static reusable instance of an <c>HttpClient</c>.</returns>
-		private HttpClient GetHttpClient()
+		internal HttpClient GetHttpClient()
 		{
 			if(_client == null)
 			{
@@ -129,7 +136,7 @@ namespace ApiClient.Common
 		/// <param name="headers">Custom headers to be sent with the request (optional).</param>
 		/// <param name="body">The request data (optional).</param>
 		/// <returns>A <c>Request</c> object containing the API response.</returns>
-		private Response SendWebRequest(string url, Dictionary<string, string> headers = null, 
+		internal Response SendWebRequest(string url, Dictionary<string, string> headers = null, 
 			string body = "")
 		{
 			HttpResponseMessage response;

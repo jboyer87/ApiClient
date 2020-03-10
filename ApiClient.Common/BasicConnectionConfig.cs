@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Text;
+﻿using System.ComponentModel.DataAnnotations;
+using ApiClient.Common.Interfaces;
 using ApiClient.Utilities;
 
 namespace ApiClient.Common
@@ -10,7 +8,7 @@ namespace ApiClient.Common
 	/// The <c>BasicConnectionConfig</c> class contains all configuration properties required to
 	/// make a <c>BasicConnection</c>.
 	/// </summary>
-	public class BasicConnectionConfig : Validatable
+	public class BasicConnectionConfig : BasicValidator, IConnectionConfiguration
 	{
 		#region [Constructors]
 

@@ -5,7 +5,7 @@ using ApiClient.Utilities.Interfaces;
 
 namespace ApiClient.Utilities
 {
-	public class Validatable : IValidatable
+	public class BasicValidator : IValidatable
 	{
 		#region [Public Methods]
 
@@ -15,7 +15,7 @@ namespace ApiClient.Utilities
 		/// <returns>
 		/// True if the properties are valid, otherwise false.
 		/// </returns>
-		public bool IsValid()
+		public virtual bool IsValid()
 		{
 			var validationContext = new ValidationContext(this);
 			var validationResults = new List<ValidationResult>();
