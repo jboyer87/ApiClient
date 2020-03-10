@@ -13,44 +13,44 @@ A `BasicConnection` object is appropriate for an API that does not require any a
 
 1. Set up your configuration object.
 
-```
-// Set the URL
-string url = "https://postman-echo.com"; // The Base URL of the API
+	```
+	// Set the URL
+	string url = "https://postman-echo.com"; // The Base URL of the API
 
-// Configure your response/request types using the built-in `ResponseType` and `RequestType` 
-// helpers.
-var responseType = ResponseType.PlainText; // Choose from `Json`, `PlainText`, or `Html` types.
-var requestType = RequestType.Json; // Choose from `Json` or `Form` types.
+	// Configure your response/request types using the built-in `ResponseType` and `RequestType` 
+	// helpers.
+	var responseType = ResponseType.PlainText; // Choose from `Json`, `PlainText`, or `Html` types.
+	var requestType = RequestType.Json; // Choose from `Json` or `Form` types.
 
-// Pass the base URL and response/request types to the `BasicConnectionConfig` constructor.
-var basicConnectionConfig = new BasicConnectionConfig(url, responseType, requestType);
-```
+	// Pass the base URL and response/request types to the `BasicConnectionConfig` constructor.
+	var basicConnectionConfig = new BasicConnectionConfig(url, responseType, requestType);
+	```
 
-1. Pass your configuration object to the BasicConnection constructor to instantiate a new connection object.
+2. Pass your configuration object to the BasicConnection constructor to instantiate a new connection object.
 
-```
-var basicConnection = new BasicConnection(basicConnectionConfig);
-```
+	```
+	var basicConnection = new BasicConnection(basicConnectionConfig);
+	```
 
 3. Send a GET or POST request and save the response in a `Response` object.
 
-```
-// For example: Sends a POST request to https://postman-echo.com/post with no additional headers
-// and "This is my body" as the response body.
-Response basicConnectionResponse = 
-	basicConnection.Post("/post", null, "This is my body"); 
-```
+	```
+	// For example: Sends a POST request to https://postman-echo.com/post with no additional headers
+	// and "This is my body" as the response body.
+	Response basicConnectionResponse = 
+		basicConnection.Post("/post", null, "This is my body"); 
+	```
 
 4. Read back the properties inside of your `Response` object. `Message` contains the response message, and `StatusCode` contains the HTTP status code.
 
-```
-Console.WriteLine(
-	"**Basic connection test**\n" +
-	String.Format("The status code: {1}\nThe response: {0}",
-	basicConnectionResponse.Message,
-	basicConnectionResponse.StatusCode)
-);
-```
+	```
+	Console.WriteLine(
+		"**Basic connection test**\n" +
+		String.Format("The status code: {1}\nThe response: {0}",
+		basicConnectionResponse.Message,
+		basicConnectionResponse.StatusCode)
+	);
+	```
 
 ## Basic Auth Connection
 
