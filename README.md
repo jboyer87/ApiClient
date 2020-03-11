@@ -56,9 +56,33 @@ A `BasicConnection` object is appropriate for an API that does not require any a
 
 A `BasicAuthConnection` object is appropriate for an API that requires only basic HTTP authentication. Basic HTTP authentication requires sending a Base-64-encoded string that contains an encoded version of the username/password pair. The `BasicAuthConnection` object handles encoding and appending this header to all of your requests.
 
-```
-Example WIP
-```
+### Setting up a Basic Auth Connection
+
+This process is very similar to setting up a `BasicConnection` object. This time, we pass additional username and password parameters to the configuration constructor.
+
+1. Set up your configuration object.
+
+	```
+	string username = "postman";
+	string password = "password";
+
+	var basicAuthConfig = 
+	new BasicAuthConnectionConfig(url, responseType, requestType, username, password);
+	```
+
+2. Pass your configuration object to the BasicAuthConnection constructor to instantiate a new connection object.
+
+	```
+	var basicAuthConnection = new BasicAuthConnection(basicAuthConfig);
+	```
+
+3. Send a GET or POST request and save the response in a `Response` object.
+
+	```
+	// For example: Sends a GET request to https://postman-echo.com/basic-auth with no additional 
+	// headers and an empty response body.
+	Response basicAuthResponse = basicAuthConnection.Get("/basic-auth", null);
+	```
 
 # Contributing
 
