@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 using ApiClient.Common.Interfaces;
 
 namespace ApiClient.Common
@@ -17,7 +18,7 @@ namespace ApiClient.Common
 		/// <param name="baseRequestUrl">The base request URL for all API requests.</param>
 		/// <param name="responseType">The API response type.</param>
 		/// <param name="requestType">The client request type.</param>
-		public BasicAuthConnectionConfig(string baseRequestUrl, ResponseType responseType, 
+		public BasicAuthConnectionConfig(Uri baseRequestUrl, ResponseType responseType, 
 			RequestType requestType, string username, string password)
 			: base(baseRequestUrl, responseType, requestType)
 		{

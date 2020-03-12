@@ -9,7 +9,7 @@ namespace ApiClient.SampleApp
 		{
 			Console.WriteLine("Hello World!");
 
-			string url = "https://postman-echo.com";
+			var url = new Uri("https://postman-echo.com");
 			var responseType = ResponseType.PlainText;
 			var requestType = RequestType.Json;
 

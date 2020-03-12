@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 using ApiClient.Utilities.Interfaces;
 
 namespace ApiClient.Common.Interfaces
@@ -15,7 +16,7 @@ namespace ApiClient.Common.Interfaces
 		/// The base request URL for the API connection.
 		/// </summary>
 		[Required]
-		public string BaseRequestUrl { get; }
+		public Uri BaseRequestUrl { get; }
 
 		/// <summary>
 		/// The <c>ResponseType</c> for all API connection responses.

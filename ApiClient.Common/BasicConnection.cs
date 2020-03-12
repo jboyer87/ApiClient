@@ -73,7 +73,7 @@ namespace ApiClient.Common
 		/// <returns>A <c>Response</c> object.</returns>
 		public virtual Response Get(string url, Dictionary<string, string> headers = null)
 		{
-			string requestUrl = ConnectionConfiguration.BaseRequestUrl + url;
+			var requestUrl = new Uri(ConnectionConfiguration.BaseRequestUrl, url);
 
 			Response response = SendWebRequest(requestUrl, headers);
 
@@ -91,7 +91,7 @@ namespace ApiClient.Common
 		public virtual Response Post(string url, Dictionary<string, string> headers = null, 
 			string body = "")
 		{
-			string requestUrl = ConnectionConfiguration.BaseRequestUrl + url;
+			var requestUrl = new Uri(ConnectionConfiguration.BaseRequestUrl, url);
 
 			Response response = SendWebRequest(requestUrl, headers, body);
 
@@ -136,7 +136,7 @@ namespace ApiClient.Common
 		/// <param name="headers">Custom headers to be sent with the request (optional).</param>
 		/// <param name="body">The request data (optional).</param>
 		/// <returns>A <c>Request</c> object containing the API response.</returns>
-		internal Response SendWebRequest(string url, Dictionary<string, string> headers = null, 
+		internal Response SendWebRequest(Uri url, Dictionary<string, string> headers = null, 
 			string body = "")
 		{
 			HttpResponseMessage response;
