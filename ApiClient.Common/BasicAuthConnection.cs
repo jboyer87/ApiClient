@@ -45,7 +45,7 @@ namespace ApiClient.Common
 
 			AddBasicAuthenticationHeader(ref headers, username, password);
 
-			string requestUrl = ConnectionConfiguration.BaseRequestUrl + url;
+			var requestUrl = new Uri(ConnectionConfiguration.BaseRequestUrl, url);
 
 			Response response = SendWebRequest(requestUrl, headers);
 
@@ -68,9 +68,9 @@ namespace ApiClient.Common
 
 			AddBasicAuthenticationHeader(ref headers, username, password);
 
-			string requestUrl = ConnectionConfiguration.BaseRequestUrl + url;
+			var requestUrl = new Uri(ConnectionConfiguration.BaseRequestUrl, url);
 
-			Response response = SendWebRequest(requestUrl, headers, body);
+			Response response = SendWebRequest(requestUrl, headers);
 
 			return response;
 		}

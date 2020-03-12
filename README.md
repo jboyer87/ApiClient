@@ -15,7 +15,7 @@ A `BasicConnection` object is appropriate for an API that does not require any a
 
 	```
 	// Set the URL
-	string url = "https://postman-echo.com"; // The Base URL of the API
+	var url = new Uri("https://postman-echo.com"); // The Base URL of the API
 
 	// Configure your response/request types using the built-in `ResponseType` and `RequestType` 
 	// helpers.
