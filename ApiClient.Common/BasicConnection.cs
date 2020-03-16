@@ -26,7 +26,7 @@ namespace ApiClient.Common
 				throw new ArgumentException("Connection configuration is not valid");
 			}
 
-			ConnectionConfiguration = connectionConfiguration;
+			ConnectionConfiguration = (BasicConnectionConfig)connectionConfiguration;
 		}
 
 		#endregion

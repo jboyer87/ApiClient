@@ -12,10 +12,15 @@ namespace ApiClient.Common
 	{
 		#region [Constructors]
 
-		public BasicAuthConnection(BasicAuthConnectionConfig connectionConfiguration) 
+		public BasicAuthConnection(IConnectionConfiguration connectionConfiguration) 
 			: base(connectionConfiguration)
 		{
-			ConnectionConfiguration = connectionConfiguration;
+			if (!connectionConfiguration.IsValid())
+			{
+				throw new ArgumentException("Connection configuration is not valid");
+			}
+
+			ConnectionConfiguration = (BasicAuthConnectionConfig)connectionConfiguration;
 		}
 
 		#endregion
@@ -76,7 +81,6 @@ namespace ApiClient.Common
 		}
 
 		#endregion
-
 
 		#region [Private Methods]
 
