@@ -1,5 +1,7 @@
 ﻿using System;
 using ApiClient.Common;
+using ApiClient.Common.Factories;
+using ApiClient.Common.Interfaces;
 
 namespace ApiClient.SampleApp
 {
@@ -15,7 +17,7 @@ namespace ApiClient.SampleApp
 
 			var basicConnectionConfig = new BasicConnectionConfig(url, responseType, requestType);
 
-			var basicConnection = new BasicConnection(basicConnectionConfig);
+			IConnection basicConnection = ConnectionFactory.GetConnection(basicConnectionConfig);
 
 			Response basicConnectionResponse = 
 				basicConnection.Post("/post", null, "This is my body");
@@ -33,7 +35,7 @@ namespace ApiClient.SampleApp
 			var basicAuthConfig = 
 				new BasicAuthConnectionConfig(url, responseType, requestType, username, password);
 
-			var basicAuthConnection = new BasicAuthConnection(basicAuthConfig);
+			IConnection basicAuthConnection = ConnectionFactory.GetConnection(basicAuthConfig);
 
 			Response basicAuthResponse = basicAuthConnection.Get("/basic-auth", null);
 
