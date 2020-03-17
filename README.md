@@ -26,10 +26,10 @@ A `BasicConnection` object is appropriate for an API that does not require any a
 	var basicConnectionConfig = new BasicConnectionConfig(url, responseType, requestType);
 	```
 
-2. Pass your configuration object to the BasicConnection constructor to instantiate a new connection object.
+2. Pass your configuration object to the `ConnectionFactory.GetConnection(...)` method to instantiate a new connection object. The `ConnectionFactory` returns the proper connection type based on the configuration passed in.
 
 	```
-	var basicConnection = new BasicConnection(basicConnectionConfig);
+	IConnection basicConnection = ConnectionFactory.GetConnection(basicConnectionConfig);
 	```
 
 3. Send a GET or POST request and save the response in a `Response` object.
@@ -70,10 +70,10 @@ This process is very similar to setting up a `BasicConnection` object. This time
 	new BasicAuthConnectionConfig(url, responseType, requestType, username, password);
 	```
 
-2. Pass your configuration object to the BasicAuthConnection constructor to instantiate a new connection object.
+2. Pass your configuration object to the `ConnectionFactory.GetConnection(...)` method to instantiate a new connection object. The `ConnectionFactory` once again returns the proper connection type based on the configuration passed in.
 
 	```
-	var basicAuthConnection = new BasicAuthConnection(basicAuthConfig);
+	IConnection basicAuthConnection = ConnectionFactory.GetConnection(basicAuthConfig);
 	```
 
 3. Send a GET or POST request and save the response in a `Response` object.
