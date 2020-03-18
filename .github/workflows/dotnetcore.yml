@@ -22,6 +22,6 @@ jobs:
       with:
         setAllVars: true
     - run: echo "NBGV_SemVer2 $NBGV_SemVer2"
-    
+
     - name: Build with dotnet
       run: dotnet build --configuration Release
