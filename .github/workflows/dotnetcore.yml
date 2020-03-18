@@ -8,14 +8,14 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: aarnott/nbgv@master
-    - run: echo "VERSION= $NBGV_Version"
-      
     - uses: actions/checkout@v2
     - name: Setup .NET Core
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 3.1.101
+
+    - uses: aarnott/nbgv@master
+    - run: echo "VERSION= $NBGV_Version"
     
     - name: Build with dotnet
       run: | 
