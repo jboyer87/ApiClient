@@ -1,6 +1,8 @@
 # ApiClient
 A C# .NET Core API Client library for connecting to and consuming data from APIs.
 
+![.NET Core](https://github.com/jboyer87/ApiClient/workflows/.NET%20Core/badge.svg?branch=master)
+
 # Usage
 
 The `ApiClient` library provides several types of connections for different uses.
