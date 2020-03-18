@@ -14,4 +14,7 @@ jobs:
       with:
         dotnet-version: 3.1.101
     - name: Build with dotnet
-      run: dotnet build --configuration Release
+      run: | 
+        dotnet tool install -g nbgv
+        nbgv get-version -v SemVer2
+        dotnet build --configuration Release
