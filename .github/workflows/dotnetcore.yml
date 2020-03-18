@@ -28,7 +28,7 @@ jobs:
     
   publish:
 
-    name: Publish Jboyer87.ApiClient.Utilities to NuGet 
+    name: Publish packages to NuGet 
 
     runs-on: ubuntu-latest
     steps:
@@ -46,7 +46,7 @@ jobs:
           VERSION_STATIC: $NBGV_SemVer2
           TAG_COMMIT: false
           # API key for the NuGet feed
-          NUGET_KEY: ${{ secrets.NUGET_PACKAGES_API_KEY }}
+          NUGET_KEY: ${{secrets.NUGET_API_KEY}}
           # NuGet package name, required when it's different from the project name
           PACKAGE_NAME: Jboyer87.ApiClient.Utilities
 
@@ -64,6 +64,12 @@ jobs:
           VERSION_STATIC: $NBGV_SemVer2
           TAG_COMMIT: false
           # API key for the NuGet feed
-          NUGET_KEY: ${{ secrets.NUGET_PACKAGES_API_KEY }}
+          NUGET_KEY: ${{secrets.NUGET_API_KEY}}
           # NuGet package name, required when it's different from the project name
           PACKAGE_NAME: Jboyer87.ApiClient
+
+      - name: Publish Packages
+        shell: bash
+        run: |
+          dotnet nuget push /home/runner/work/ApiClient/ApiClient/ApiClient.Common.*.nupkg -s https://api.nuget.org/v3/index.json -k ${{secrets.NUGET_API_KEY}}
+          dotnet nuget push /home/runner/work/ApiClient/ApiClient/ApiClient.Utilities.*.nupkg -s https://api.nuget.org/v3/index.json -k ${{secrets.NUGET_API_KEY}}
