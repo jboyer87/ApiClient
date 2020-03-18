@@ -26,44 +26,32 @@ jobs:
     - name: Build with dotnet
       run: dotnet build --configuration Release
     
-  publish:
-
-    name: Publish Jboyer87.ApiClient.Utilities to NuGet 
-
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      
-      # Publish
-      - name: Publish Jboyer87.ApiClient.Utilities to NuGet 
-        uses: rohith/publish-nuget@v2
-        with:
-          # Filepath of the project to be packaged, relative to root of repository
-          PROJECT_FILE_PATH: ApiClient.Utilities/ApiClient.Utilities.csproj
-          # Filepath containing version info, relative to root of repository. Defaults to `PROJECT_FILE_PATH` if not specified
-          VERSION_FILE_PATH: .
-          # Bypasses version resolution; useful for external providers like Nerdbank.GitVersioning
-          VERSION_STATIC: $NBGV_SemVer2
-          TAG_COMMIT: false
-          # API key for the NuGet feed
-          NUGET_KEY: ${{ secrets.NUGET_PACKAGES_API_KEY }}
-          # NuGet package name, required when it's different from the project name
-          PACKAGE_NAME: Jboyer87.ApiClient.Utilities
-
-      - uses: actions/checkout@v2
-      
-      # Publish
-      - name: Publish Jboyer87.ApiClient to NuGet 
-        uses: rohith/publish-nuget@v2
-        with:
-          # Filepath of the project to be packaged, relative to root of repository
-          PROJECT_FILE_PATH: ApiClient.Common/ApiClient.Common.csproj
-          # Filepath containing version info, relative to root of repository. Defaults to `PROJECT_FILE_PATH` if not specified
-          VERSION_FILE_PATH: .
-          # Bypasses version resolution; useful for external providers like Nerdbank.GitVersioning
-          VERSION_STATIC: $NBGV_SemVer2
-          TAG_COMMIT: false
-          # API key for the NuGet feed
-          NUGET_KEY: ${{ secrets.NUGET_PACKAGES_API_KEY }}
-          # NuGet package name, required when it's different from the project name
-          PACKAGE_NAME: Jboyer87.ApiClient
+    - name: Publish Jboyer87.ApiClient.Utilities to NuGet 
+      uses: rohith/publish-nuget@v2.2.0
+      with:
+        # Filepath of the project to be packaged, relative to root of repository
+        PROJECT_FILE_PATH: ApiClient.Utilities/ApiClient.Utilities.csproj
+        # Filepath containing version info, relative to root of repository. Defaults to `PROJECT_FILE_PATH` if not specified
+        VERSION_FILE_PATH: .
+        # Bypasses version resolution; useful for external providers like Nerdbank.GitVersioning
+        VERSION_STATIC: $NBGV_SemVer2
+        TAG_COMMIT: false
+        # API key for the NuGet feed
+        NUGET_KEY: ${{ secrets.NUGET_PACKAGES_API_KEY }}
+        # NuGet package name, required when it's different from the project name
+        PACKAGE_NAME: Jboyer87.ApiClient.Utilities
+        
+    - name: Publish Jboyer87.ApiClient to NuGet 
+      uses: rohith/publish-nuget@v2.2.0
+      with:
+        # Filepath of the project to be packaged, relative to root of repository
+        PROJECT_FILE_PATH: ApiClient.Common/ApiClient.Common.csproj
+        # Filepath containing version info, relative to root of repository. Defaults to `PROJECT_FILE_PATH` if not specified
+        VERSION_FILE_PATH: .
+        # Bypasses version resolution; useful for external providers like Nerdbank.GitVersioning
+        VERSION_STATIC: $NBGV_SemVer2
+        TAG_COMMIT: false
+        # API key for the NuGet feed
+        NUGET_KEY: ${{ secrets.NUGET_PACKAGES_API_KEY }}
+        # NuGet package name, required when it's different from the project name
+        PACKAGE_NAME: Jboyer87.ApiClient
