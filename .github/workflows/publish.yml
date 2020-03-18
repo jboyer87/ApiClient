@@ -1,0 +1,40 @@
+name: Publish to NuGet
+on:
+  push:
+    branches:
+      - master
+jobs:
+
+  publish:
+    name: List on NuGet
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+      with:
+       fetch-depth: 0 # avoid shallow clone so nbgv can do its work.
+
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 3.1.101
+
+    - name: Publish ApiClient.Utilities
+      uses: rohith/publish-nuget@v2
+      with:
+        PROJECT_FILE_PATH: ApiClient.Utilities/ApiClient.Utilities.csproj
+        VERSION_FILE_PATH: .
+        VERSION_STATIC: $NBGV_SemVer2
+        TAG_COMMIT: false
+        NUGET_KEY: ${{ secrets.NUGET_API_KEY }} # API key for the NuGet feed
+        PACKAGE_NAME: Jboyer87.ApiClient.Utilities # NuGet package name
+
+    - name: Publish ApiClient.Common
+      uses: rohith/publish-nuget@v2
+      with:
+        PROJECT_FILE_PATH: ApiClient.Common/ApiClient.Common.csproj
+        VERSION_FILE_PATH: .
+        VERSION_STATIC: $NBGV_SemVer2
+        TAG_COMMIT: false
+        NUGET_KEY: ${{secrets.NUGET_API_KEY}} # API key for the NuGet feed
+        PACKAGE_NAME: Jboyer87.ApiClient # NuGet package name
