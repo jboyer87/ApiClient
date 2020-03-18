@@ -8,14 +8,16 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - uses: aarnott/nbgv@master
+    - run: echo "VERSION= $NBGV_Version"
+      
     - uses: actions/checkout@v2
     - name: Setup .NET Core
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 3.1.101
+    
     - name: Build with dotnet
       run: | 
         dotnet tool install -g nbgv
-        RUN echo 'http://dl-cdn.alpinelinux.org/alpine/v3.8/main' >> /etc/apk/repositories
-        RUN apk --no-cache add openssl==1.0.2u-r0
         dotnet build --configuration Release
