@@ -1,7 +1,7 @@
 ﻿using System;
-using ApiClient.Utilities.Interfaces;
+using ApiClient.Utilities;
 
-namespace ApiClient.Common.Interfaces
+namespace ApiClient.Common
 {
 	/// <summary>
 	/// The <c>IAccessToken</c> interface defines the public interface for access token objects.

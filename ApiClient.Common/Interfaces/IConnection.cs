@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace ApiClient.Common.Interfaces
+namespace ApiClient.Common
 {
 	/// <summary>
 	/// The <c>IConnection</c> interface defines the public interface for basic connections.

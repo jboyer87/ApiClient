@@ -1,4 +1,4 @@
-﻿namespace ApiClient.Common.Interfaces
+﻿namespace ApiClient.Common
 {
 	/// <summary>
 	/// The <c>IThrottledConnection</c> interface defines the public interface for throttled 
