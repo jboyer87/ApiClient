@@ -22,7 +22,7 @@ jobs:
         shell: bash
         run: |
           dotnet pack --configuration Release
-          dotnet nuget push **/ApiClient.Common.*.nupkg --api-key ${{secrets.NUGET_API_KEY}} --source https://api.nuget.org/v3/index.json --no-symbols
-          dotnet nuget push **/ApiClient.Utilities.*.nupkg --api-key ${{secrets.NUGET_API_KEY}} --source https://api.nuget.org/v3/index.json --no-symbols
-          dotnet nuget push **/ApiClient.Common.*.nupkg --api-key ${{secrets.GITHUB_PACKAGES_PAT}} --source https://github.com/jboyer87/ApiClient --no-symbols
-          dotnet nuget push **/ApiClient.Utilities*.nupkg --api-key ${{secrets.GITHUB_PACKAGES_PAT}} --source https://github.com/jboyer87/ApiClient --no-symbols
+          dotnet nuget push **/ApiClient.Common.*.nupkg --api-key ${{secrets.NUGET_API_KEY}} --source https://api.nuget.org/v3/index.json --no-symbols true
+          dotnet nuget push **/ApiClient.Utilities.*.nupkg --api-key ${{secrets.NUGET_API_KEY}} --source https://api.nuget.org/v3/index.json --no-symbols true
+          dotnet nuget push **/ApiClient.Common.*.nupkg --api-key ${{secrets.GITHUB_PACKAGES_PAT}} --source https://github.com/jboyer87/ApiClient --no-symbols true
+          dotnet nuget push **/ApiClient.Utilities*.nupkg --api-key ${{secrets.GITHUB_PACKAGES_PAT}} --source https://github.com/jboyer87/ApiClient --no-symbols true
