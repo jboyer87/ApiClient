@@ -24,5 +24,3 @@ jobs:
           dotnet pack --configuration Release
           dotnet nuget push **/ApiClient.Common.*.nupkg --api-key ${{secrets.NUGET_API_KEY}} --source https://api.nuget.org/v3/index.json --no-symbols true
           dotnet nuget push **/ApiClient.Utilities.*.nupkg --api-key ${{secrets.NUGET_API_KEY}} --source https://api.nuget.org/v3/index.json --no-symbols true
-          dotnet nuget push **/ApiClient.Common.*.nupkg --api-key ${{ secrets.GITHUB_TOKEN }} --source https://nuget.pkg.github.com/jboyer87/index.json --no-symbols true
-          dotnet nuget push **/ApiClient.Utilities.*.nupkg --api-key ${{ secrets.GITHUB_TOKEN }} --source https://nuget.pkg.github.com/jboyer87/index.json --no-symbols true
