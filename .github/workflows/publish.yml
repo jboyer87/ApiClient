@@ -19,22 +19,9 @@ jobs:
       with:
         dotnet-version: 3.1.101
 
-    - name: Publish ApiClient.Utilities
-      uses: rohith/publish-nuget@v2
-      with:
-        PROJECT_FILE_PATH: ApiClient.Utilities/ApiClient.Utilities.csproj
-        VERSION_FILE_PATH: .
-        VERSION_STATIC: $NBGV_SemVer2
-        TAG_COMMIT: false
-        NUGET_KEY: ${{ secrets.NUGET_API_KEY }} # API key for the NuGet feed
-        PACKAGE_NAME: Jboyer87.ApiClient.Utilities # NuGet package name
-
-    - name: Publish ApiClient.Common
-      uses: rohith/publish-nuget@v2
-      with:
-        PROJECT_FILE_PATH: ApiClient.Common/ApiClient.Common.csproj
-        VERSION_FILE_PATH: .
-        VERSION_STATIC: $NBGV_SemVer2
-        TAG_COMMIT: false
-        NUGET_KEY: ${{secrets.NUGET_API_KEY}} # API key for the NuGet feed
-        PACKAGE_NAME: Jboyer87.ApiClient # NuGet package name
+    - name: Publish
+      shell: bash
+      run: |
+        dotnet pack --configuration Release
+        dotnet nuget push **/*.nupkg --api-key ${{secrets.NUGET_API_KEY}} --source https://api.nuget.org/v3/index.json
+        dotnet nuget push **/*.nupkg --api-key ${{secrets.GITHUB_PACKAGES_PAT}} --source https://github.com/jboyer87/ApiClient
