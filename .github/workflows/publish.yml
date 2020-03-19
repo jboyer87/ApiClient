@@ -4,20 +4,19 @@ on:
     branches:
       - master
 jobs:
-
   publish:
     name: List on NuGet
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
-      with:
-       fetch-depth: 0 # avoid shallow clone so nbgv can do its work.
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0 # avoid shallow clone so nbgv can do its work.
 
-    - name: Setup .NET Core
-      uses: actions/setup-dotnet@v1
-      with:
-        dotnet-version: 3.1.101
+      - name: Setup .NET Core
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: 3.1.101
 
     - name: Publish
       shell: bash
