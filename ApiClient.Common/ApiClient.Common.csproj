@@ -4,6 +4,15 @@
 		<TargetFramework>netcoreapp3.1</TargetFramework>
 	</PropertyGroup>
 
+	<PropertyGroup>
+		<Product>ApiClient.Common</Product>
+		<Authors>James J. Boyer</Authors>
+		<Copyright>Copyright 2020</Copyright>
+		<PackageDescription>A C# .NET Core API client library for connection to and consuming data from APIs</PackageDescription>
+		<RepositoryUrl>https://github.com/jboyer87/ApiClient</RepositoryUrl>
+		<RepositoryType>git</RepositoryType>
+	</PropertyGroup>
+
 	<ItemGroup>
 		<ProjectReference Include="..\ApiClient.Utilities\ApiClient.Utilities.csproj" />
 	</ItemGroup>
