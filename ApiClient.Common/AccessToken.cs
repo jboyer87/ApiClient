@@ -1,8 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
-using ApiClient.Common.Interfaces;
 using ApiClient.Utilities;
-using ApiClient.Utilities.CustomValidators;
 
 namespace ApiClient.Common
 {

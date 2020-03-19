@@ -1,6 +1,5 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
-using ApiClient.Common.Interfaces;
 using ApiClient.Utilities;
 
 namespace ApiClient.Common
