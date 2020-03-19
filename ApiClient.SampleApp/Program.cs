@@ -1,7 +1,5 @@
 ﻿using System;
 using ApiClient.Common;
-using ApiClient.Common.Factories;
-using ApiClient.Common.Interfaces;
 
 namespace ApiClient.SampleApp
 {

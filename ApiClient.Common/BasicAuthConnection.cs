@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using ApiClient.Common.Interfaces;
 
 namespace ApiClient.Common
 {

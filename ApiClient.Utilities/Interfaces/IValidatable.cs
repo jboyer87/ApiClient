@@ -1,4 +1,4 @@
-﻿namespace ApiClient.Utilities.Interfaces
+﻿namespace ApiClient.Utilities
 {
 	/// <summary>
 	/// Represents a validatable object.

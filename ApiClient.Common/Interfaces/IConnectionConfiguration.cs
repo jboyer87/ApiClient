@@ -1,8 +1,8 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
-using ApiClient.Utilities.Interfaces;
+using ApiClient.Utilities;
 
-namespace ApiClient.Common.Interfaces
+namespace ApiClient.Common
 {
 	/// <summary>
 	/// The <c>IConnectionConfiguration</c> interface defines the public interface for connection

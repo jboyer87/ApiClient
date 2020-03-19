@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Text;
-using ApiClient.Common.Interfaces;
 
 namespace ApiClient.Common
 {

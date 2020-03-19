@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
-using ApiClient.Common.Interfaces;
 
-namespace ApiClient.Common.Factories
+namespace ApiClient.Common
 {
 	/// <summary>
 	/// The <c>ConnectionFactory</c> class creates <c>IConnection</c> objects.

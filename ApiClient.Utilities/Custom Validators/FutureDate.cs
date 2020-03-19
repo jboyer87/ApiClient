@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace ApiClient.Utilities.CustomValidators
+namespace ApiClient.Utilities
 {
 	/// <summary>
 	/// The <c>FutureDate</c> class implements a custom validator that ensures that a date is some
