@@ -4,24 +4,25 @@ on:
     branches:
       - master
 jobs:
-
   publish:
     name: List on NuGet
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
-      with:
-       fetch-depth: 0 # avoid shallow clone so nbgv can do its work.
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0 # avoid shallow clone so nbgv can do its work.
 
-    - name: Setup .NET Core
-      uses: actions/setup-dotnet@v1
-      with:
-        dotnet-version: 3.1.101
+      - name: Setup .NET Core
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: 3.1.101
 
-    - name: Publish
-      shell: bash
-      run: |
-        dotnet pack --configuration Release
-        dotnet nuget push **/*.nupkg --api-key ${{secrets.NUGET_API_KEY}} --source https://api.nuget.org/v3/index.json
-        dotnet nuget push **/*.nupkg --api-key ${{secrets.GITHUB_PACKAGES_PAT}} --source https://github.com/jboyer87/ApiClient
+      - name: Publish
+        shell: bash
+        run: |
+          dotnet pack --configuration Release
+          dotnet nuget push **/ApiClient.Common.*.nupkg --api-key ${{secrets.NUGET_API_KEY}} --source https://api.nuget.org/v3/index.json --no-symbols
+          dotnet nuget push **/ApiClient.Utilities.*.nupkg --api-key ${{secrets.NUGET_API_KEY}} --source https://api.nuget.org/v3/index.json --no-symbols
+          dotnet nuget push **/ApiClient.Common.*.nupkg --api-key ${{secrets.GITHUB_PACKAGES_PAT}} --source https://github.com/jboyer87/ApiClient --no-symbols
+          dotnet nuget push **/ApiClient.Utilities*.nupkg --api-key ${{secrets.GITHUB_PACKAGES_PAT}} --source https://github.com/jboyer87/ApiClient --no-symbols
