@@ -35,7 +35,7 @@ namespace ApiClient.Common
 		/// <param name="url">The URL to send the request to.</param>
 		/// <param name="headers">The headers to send with the request.</param>
 		/// <returns>The response from the URL.</returns>
-		Response Get(string url, Dictionary<string, string> headers);
+		Response Get(string url, Dictionary<string, string> headers = null);
 
 		/// <summary>
 		/// Sends a POST request to the specified <paramref name="url"/> with the specified 
@@ -45,7 +45,7 @@ namespace ApiClient.Common
 		/// <param name="headers">The headers to send with the request.</param>
 		/// <param name="body">The request body.</param>
 		/// <returns>The response from the URL.</returns>
-		Response Post(string url, Dictionary<string, string> headers, string body);
+		Response Post(string url, Dictionary<string, string> headers = null, string body = "");
 
 		#endregion
 	}
