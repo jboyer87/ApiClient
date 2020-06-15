@@ -143,12 +143,23 @@ namespace ApiClient.Common
 
 			HttpClient client = GetHttpClient();
 
+			if(client.DefaultRequestHeaders.Contains("Accept"))
+			{
+				client.DefaultRequestHeaders.Remove("Accept");
+			}
+
 			client.DefaultRequestHeaders.Add("Accept", ResponseType);
 
 			if (headers != null)
 			{
 				foreach (var header in headers)
 				{
+					// Avoid adding duplicate headers to our request
+					if(client.DefaultRequestHeaders.Contains(header.Key))
+					{
+						client.DefaultRequestHeaders.Remove(header.Key);
+					}
+
 					client.DefaultRequestHeaders.Add(header.Key, header.Value);
 				}
 			}
