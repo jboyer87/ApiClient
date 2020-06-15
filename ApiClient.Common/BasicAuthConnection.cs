@@ -74,7 +74,7 @@ namespace ApiClient.Common
 
 			var requestUrl = new Uri(ConnectionConfiguration.BaseRequestUrl, url);
 
-			Response response = SendWebRequest(requestUrl, headers);
+			Response response = SendWebRequest(requestUrl, headers, body);
 
 			return response;
 		}
